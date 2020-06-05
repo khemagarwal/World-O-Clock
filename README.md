@@ -1,10 +1,7 @@
-# worldoclock
+# World O'Clock
 
-A flutter application to access  time of different places all around the world.
+A flutter app to access time of different places all around the world by using world time api.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:
 
