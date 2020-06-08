@@ -39,7 +39,7 @@ class WorldTime{
     }
     catch(e) {
       print("Caught error: $e");
-      time = "could not get time data";
+      time = "No Internet";
     }
 
   }
