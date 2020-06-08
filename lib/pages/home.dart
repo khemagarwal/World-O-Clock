@@ -12,8 +12,9 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
 
-    data = ModalRoute.of(context).settings.arguments;
-    print(data);
+    //receiving data via routes. Ternary is used to add a check if app is loading for first time and there is no data or if there is a data received from previous use
+    data = data.isNotEmpty ? data : ModalRoute.of(context).settings.arguments;
+    print("data: " + data.toString());
 
     //set background
     String bgImage = data['isDaytime'] ? 'day.jpg' : 'night.jpg';
@@ -36,8 +37,16 @@ class _HomeState extends State<Home> {
             child: Column(
               children: <Widget>[
                 FlatButton.icon(
-                  onPressed: (){
-                    Navigator.pushNamed(context, "/location");
+                  onPressed: () async{
+                    dynamic result = await Navigator.pushNamed(context, "/location");
+                    setState(() {
+                      data = {
+                        'time': result['time'],
+                        'location': result['location'],
+                        'isDaytime': result['isDaytime'],
+                        'flag': result['flag']
+                      };
+                    });
                   },
                   icon: Icon(
                     Icons.edit_location,

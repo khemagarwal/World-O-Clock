@@ -24,13 +24,22 @@ class WorldTime{
       String datetime = data['datetime'];
       String offsetHours = data['utc_offset'].substring(1,3);
       String offsetMinutes = data['utc_offset'].substring(4,6);
+      String plusOrMinus = data['utc_offset'].substring(0,1);
 
       //Create DateTime object
       DateTime now = DateTime.parse(datetime);
-      now = now.add(Duration(hours: int.parse(offsetHours), minutes: int.parse(offsetMinutes)));
+//      print("now: $now");
+      if (plusOrMinus == '+'){
+        now = now.add(Duration(hours: int.parse(offsetHours), minutes: int.parse(offsetMinutes)));
+      }
+      else if(plusOrMinus == '-'){
+        now = now.subtract(Duration(hours: int.parse(offsetHours), minutes: int.parse(offsetMinutes)));
+      }
+
 
       //set time property
       time = DateFormat.jm().format(now);
+//      print("time: $time");
       isDaytime = now.hour > 6 && now.hour < 20 ? true : false;
     }
     catch(e) {
