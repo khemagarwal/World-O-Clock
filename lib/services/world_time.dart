@@ -8,6 +8,8 @@ class WorldTime{
   String time; //the time in that location
   String flag; //url to assets flag icon
   String url; //location url for api endpoints
+  bool isDaytime; //true or false if daytime or not
+
 
   WorldTime({this.location, this.flag, this.url});
 
@@ -17,25 +19,19 @@ class WorldTime{
       //make the request
       Response response = await get('http://worldtimeapi.org/api/timezone/$url');
       Map data = jsonDecode(response.body);
-      //print(data);
 
       //get properties from data
       String datetime = data['datetime'];
       String offsetHours = data['utc_offset'].substring(1,3);
       String offsetMinutes = data['utc_offset'].substring(4,6);
-      //print("datetime: " + datetime);
-      //print("offsetHours: " + offsetHours);
-      //print("offsetMinutes: " + offsetMinutes);
 
       //Create DateTime object
       DateTime now = DateTime.parse(datetime);
-      //print("now: " + now.toString());
       now = now.add(Duration(hours: int.parse(offsetHours), minutes: int.parse(offsetMinutes)));
 
       //set time property
       time = DateFormat.jm().format(now);
-
-      //print(now);
+      isDaytime = now.hour > 6 && now.hour < 20 ? true : false;
     }
     catch(e) {
       print("Caught error: $e");
