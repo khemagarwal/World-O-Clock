@@ -25,6 +25,11 @@ class _ChooseLocationState extends State<ChooseLocation> {
     WorldTime(url: 'America/New_York', location: 'New_York', flag: 'usa.png'),
     WorldTime(url: 'Asia/Seoul', location: 'Seoul', flag: 'south_korea.png'),
     WorldTime(url: 'Asia/Jakarta', location: 'Jakarta', flag: 'indonesia.png'),
+    WorldTime(url: 'Asia/Dubai', location: 'Dubai', flag: 'uae.png'),
+    WorldTime(url: 'Europe/Dublin', location: 'Dublin', flag: 'ireland.png'),
+    WorldTime(url: 'Europe/Paris', location: 'Paris', flag: 'france.png'),
+    WorldTime(url: 'Europe/Rome', location: 'Rome', flag: 'italy.png'),
+    WorldTime(url: 'Europe/Zurich', location: 'Zurich', flag: 'switzerland.png'),
   ];
 
   void updateTime(index) async {
@@ -45,7 +50,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        backgroundColor: Colors.blue[900],
+        backgroundColor: Colors.lightBlue[900],
         title: Text("Choose a location"),
         centerTitle: true,
         elevation: 0,

@@ -8,6 +8,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
 
   Map data = {};
+  String bgImage;
+  Color bgColor, contentColor;
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +19,17 @@ class _HomeState extends State<Home> {
     print("data: " + data.toString());
 
     //set background
-    String bgImage = data['isDaytime'] ? 'day.jpg' : 'night.jpg';
-    Color bgColor = data['isDaytime'] ? Colors.blue[200] : Colors.indigo[700];
-    Color contentColor = data['isDaytime'] ? Colors.black : Colors.white;
+    if (data['isDaytime'] != null){
+      bgImage = data['isDaytime'] ? 'day.jpg' : 'night.jpg';
+      bgColor = data['isDaytime'] ? Colors.blue[200] : Colors.indigo[700];
+      contentColor = data['isDaytime'] ? Colors.black : Colors.white;
+    }
+    else {
+      bgImage = '';
+      bgColor = Colors.blue[200];
+      contentColor = Colors.black;
+    }
+
 
 
     return Scaffold(

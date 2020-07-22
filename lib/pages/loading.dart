@@ -29,11 +29,22 @@ class _LoadingState extends State<Loading> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[900],
-      body: Center(
-        child: SpinKitPouringHourglass(
-          color: Colors.white,
-          size: 50.0,
+      backgroundColor: Colors.transparent,
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [Colors.indigo[700], Colors.blue[400]],
+//            stops: [0.1, 0.3, 0.7, 1],
+//            colors: [Colors.blue[300], Colors.indigo[700], Colors.indigo, Colors.blue],
+          )
+        ),
+        child: Center(
+          child: SpinKitPouringHourglass(
+            color: Colors.white,
+            size: 50.0,
+          ),
         ),
       ),
     );

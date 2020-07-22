@@ -1,4 +1,4 @@
-package com.khedubaba.worldoclock;
+package com.scrollinframe.worldoclock;
 
 import io.flutter.embedding.android.FlutterActivity;
 
